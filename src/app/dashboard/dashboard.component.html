@@ -1,0 +1,93 @@
+<div class="dashboard-container">
+  <header class="header">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="CTU Logo" class="logo-img">
+      <span>CTU FORUM</span>
+    </div>
+    <div class="icons">
+      <div class="notification" (click)="viewNotifications()">
+        <img src="/assets/bell.png" alt="Notifications" class="icon">
+        <span class="badge">{{ notifications.length }}</span>
+      </div>
+      <div class="hamburger" [ngClass]="{'open': isMenuOpen}" (click)="toggleMenu()">
+        <img [src]="isMenuOpen ? '/assets/close.png' : '/assets/hamburger.png'" alt="Menu" class="icon">
+      </div>
+      <div class="menu" *ngIf="isMenuOpen">
+        <div class="menu-header">
+          <img src="/assets/profile.png" alt="User Avatar">
+          <span>{{ user?.username }}</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/profile')">
+          <img src="/assets/profile.png" alt="Profile" class="menu-icon">
+          <span>Profile</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/settings')">
+          <img src="/assets/settings.png" alt="Settings" class="menu-icon">
+          <span>Settings</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/helps')">
+          <img src="/assets/help.png" alt="Helps" class="menu-icon">
+          <span>Helps</span>
+        </div>
+        <div class="menu-item" (click)="logout()">
+          <img src="/assets/logout.png" alt="Logout" class="menu-icon">
+          <span>Logout</span>
+        </div>
+      </div>
+      <div class="backdrop" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+    </div>
+  </header>
+  <main class="main-content">
+    <section class="welcome-section">
+      <h1>Welcome, {{ user?.username }}!</h1>
+    </section>
+    <section class="quick-actions">
+      <button class="action-btn" (click)="createNewPost()">New Post</button>
+      <button class="action-btn">Join Discussion</button>
+      <button class="action-btn">View Events</button>
+      <button class="action-btn">Explore</button>
+    </section>
+    <section class="recent-discussions">
+      <h2>Recent Discussions</h2>
+      <div class="discussion" *ngFor="let discussion of discussions">
+        <h3>{{ discussion.title }}</h3>
+        <p>{{ discussion.description }}</p>
+        <p class="meta">Posted by {{ discussion.author }} • {{ discussion.timestamp }}</p>
+      </div>
+    </section>
+    <section class="upcoming-events">
+      <h2>Upcoming Events</h2>
+      <div class="event" *ngFor="let event of events">
+        <div>
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.dateTime }}</p>
+        </div>
+        <button class="join-btn" [ngClass]="{'joined': hasJoined(event.id)}" (click)="joinEvent(event.id)">
+          {{ hasJoined(event.id) ? 'Joined' : 'Join' }}
+        </button>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <div class="nav-item active" (click)="navigateTo('/dashboard')">
+      <img src="/assets/home.png" alt="Home" class="nav-icon">
+      <span>Home</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/discussions')">
+      <img src="/assets/discussion.png" alt="Discussions" class="nav-icon">
+      <span>Discussions</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/events')">
+      <img src="/assets/event.png" alt="Events" class="nav-icon">
+      <span>Events</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/activities')">
+      <img src="/assets/activities.png" alt="Activities" class="nav-icon">
+      <span>Activities</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/profile')">
+      <img src="/assets/profile.png" alt="Profile" class="nav-icon">
+      <span>Profile</span>
+    </div>
+  </nav>
+</div>

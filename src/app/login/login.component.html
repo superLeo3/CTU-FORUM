@@ -1,0 +1,24 @@
+<div class="login-container">
+  <div class="header">
+    <img src="/assets/logo.png" alt="CTU Logo" class="logo">
+    <h1>CTU FORUM</h1>
+  </div>
+  <div class="form-container">
+    <p class="welcome-text">Welcome to the CTU Community!</p>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <span class="icon user-icon"></span>
+        <input type="text" placeholder="Username or Email" [(ngModel)]="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <span class="icon lock-icon"></span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+      </div>
+      <button type="submit" class="sign-in-btn">Sign In</button>
+    </form>
+    <div class="signup-section">
+      <p>New here?</p>
+      <button class="sign-up-btn" [routerLink]="['/signup']">Sign Up</button>
+    </div>
+  </div>
+</div>

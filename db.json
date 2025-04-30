@@ -1,0 +1,153 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "test",
+      "password": "test123",
+      "name": "Deonan Leo",
+      "bio": "Nothing.",
+      "studentId": "82271186",
+      "course": "BS in Information Technology",
+      "yearLevel": "3rd Year"
+    },
+    {
+      "id": "f42f",
+      "username": "secret",
+      "email": "secreeet04@gmail.com",
+      "password": "secret",
+      "course": "bsit",
+      "yearLevel": "3"
+    }
+  ],
+  "discussions": [
+    {
+      "id": "1",
+      "title": "Need Help with Data Structure!",
+      "description": "Can someone explain linked list? I'm struggling with the concepts.",
+      "author": "test",
+      "timestamp": "2025-04-27T09:16:00Z",
+      "category": "Academics",
+      "comments": 5,
+      "likes": 12
+    },
+    {
+      "id": "2",
+      "title": "Study Group for Finals",
+      "description": "Anyone interested in forming a study group for the upcoming finals?",
+      "author": "Joshrael",
+      "timestamp": "2025-04-17T06:16:00Z",
+      "category": "Academics",
+      "comments": 8,
+      "likes": 20
+    },
+    {
+      "id": "3",
+      "title": "Best Study Spots on Campus?",
+      "description": "Looking for quiet places to study. Any recommendations?",
+      "author": "Leo",
+      "timestamp": "2025-04-16T11:16:00Z",
+      "category": "Campus Life",
+      "comments": 3,
+      "likes": 15
+    },
+    {
+      "id": "4",
+      "title": "Programming Club Meeting",
+      "description": "We're meeting this Friday to discuss new projects. Join us!",
+      "author": "Admin",
+      "timestamp": "2025-04-15T11:16:00Z",
+      "category": "General",
+      "comments": 0,
+      "likes": 0
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Tech Exhibit 2025",
+      "dateTime": "2025-03-25T09:00:00Z",
+      "location": "CTU Main Auditorium",
+      "category": "Academic"
+    },
+    {
+      "id": "2",
+      "title": "Intramurals 2K25",
+      "dateTime": "2025-04-10T10:00:00Z",
+      "location": "CTU Gymnasium",
+      "category": "Sports"
+    },
+    {
+      "id": "3",
+      "title": "Fun Run 2025",
+      "dateTime": "2025-04-15T13:00:00Z",
+      "location": "CTU Oval",
+      "category": "Social"
+    },
+    {
+      "id": "4",
+      "title": "Design Hearing 2025",
+      "dateTime": "2025-04-20T09:00:00Z",
+      "location": "CTU Main Auditorium",
+      "category": "Academic"
+    }
+  ],
+  "activities": [
+    {
+      "id": "1",
+      "title": "Robotics Club",
+      "description": "Join our weekly meetings to build and program robots!",
+      "contact": "robotics@ctu.edu",
+      "category": "Academic"
+    },
+    {
+      "id": "2",
+      "title": "Dance Club",
+      "description": "Show your steps, follow the rhythm.",
+      "contact": "dancetroupe@ctu.edu",
+      "category": "Dance"
+    },
+    {
+      "id": "3",
+      "title": "Basketball Club",
+      "description": "Join our team for weekly practices and tournaments!",
+      "contact": "basketball@ctu.edu",
+      "category": "Sports"
+    },
+    {
+      "id": "4",
+      "title": "Art Society",
+      "description": "Explore your creativity with painting and sculpture.",
+      "contact": "artsociety@ctu.edu",
+      "category": "Arts"
+    }
+  ],
+  "joinedEvents": [
+    {
+      "id": "1",
+      "userId": 1,
+      "eventId": 1
+    },
+    {
+      "id": "cf9e",
+      "userId": "1",
+      "eventId": "1"
+    },
+    {
+      "id": "80b3",
+      "userId": "1",
+      "eventId": "2"
+    }
+  ],
+  "joinedActivities": [
+    {
+      "id": "1",
+      "userId": 1,
+      "activityId": 1
+    },
+    {
+      "id": "ffb0",
+      "userId": "1",
+      "activityId": "1"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<div class="activities-container">
+  <header class="header">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="CTU Logo" class="logo-img">
+      <span>CTU FORUM</span>
+    </div>
+    <div class="icons">
+      <div class="notification" (click)="navigateTo('/notifications')">
+        <img src="/assets/bell.png" alt="Notifications" class="icon">
+        <span class="badge">3</span>
+      </div>
+      <div class="hamburger" [ngClass]="{'open': isMenuOpen}" (click)="toggleMenu()">
+        <img [src]="isMenuOpen ? '/assets/close.png' : '/assets/hamburger.png'" alt="Menu" class="icon">
+      </div>
+      <div class="menu" *ngIf="isMenuOpen">
+        <div class="menu-header">
+          <img src="/assets/profile.png" alt="User Avatar">
+          <span>{{ user?.username }}</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/profile')">
+          <img src="/assets/profile.png" alt="Profile" class="menu-icon">
+          <span>Profile</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/settings')">
+          <img src="/assets/settings.png" alt="Settings" class="menu-icon">
+          <span>Settings</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/helps')">
+          <img src="/assets/help.png" alt="Helps" class="menu-icon">
+          <span>Helps</span>
+        </div>
+        <div class="menu-item" (click)="logout()">
+          <img src="/assets/logout.png" alt="Logout" class="menu-icon">
+          <span>Logout</span>
+        </div>
+      </div>
+      <div class="backdrop" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+    </div>
+  </header>
+  <main class="main-content">
+    <section class="search-section">
+      <input type="text" placeholder="Search activities..." class="search-bar">
+    </section>
+    <section class="categories">
+      <button class="category-btn" [ngClass]="{'active': selectedCategory === 'ALL'}" (click)="selectCategory('ALL')">ALL</button>
+      <button class="category-btn" [ngClass]="{'active': selectedCategory === 'ACADEMIC'}" (click)="selectCategory('ACADEMIC')">Academic</button>
+      <button class="category-btn" [ngClass]="{'active': selectedCategory === 'SPORTS'}" (click)="selectCategory('SPORTS')">Sports</button>
+      <button class="category-btn" [ngClass]="{'active': selectedCategory === 'ARTS'}" (click)="selectCategory('ARTS')">Arts</button>
+    </section>
+    <section class="activity-list">
+      <div class="activity" *ngFor="let activity of filteredActivities">
+        <div class="activity-details">
+          <h3>{{ activity.title }}</h3>
+          <p>{{ activity.description }}</p>
+          <p>Contact: {{ activity.contact }}</p>
+          <span class="category-tag">{{ activity.category }}</span>
+        </div>
+        <div class="activity-actions">
+          <button class="join-btn" [ngClass]="{'joined': hasJoined(activity.id)}"iają (click)="joinActivity(activity.id)">
+            {{ hasJoined(activity.id) ? 'Joined' : 'Join' }}
+          </button>
+          <button class="learn-more-btn" (click)="learnMore(activity.id)">Learn More</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <div class="nav-item" (click)="navigateTo('/dashboard')">
+      <img src="/assets/home.png" alt="Home" class="nav-icon">
+      <span>Home</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/discussions')">
+      <img src="/assets/discussion.png" alt="Discussions" class="nav-icon">
+      <span>Discussions</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/events')">
+      <img src="/assets/event.png" alt="Events" class="nav-icon">
+      <span>Events</span>
+    </div>
+    <div class="nav-item active" (click)="navigateTo('/activities')">
+      <img src="/assets/activities.png" alt="Activities" class="nav-icon">
+      <span>Activities</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/profile')">
+      <img src="/assets/profile.png" alt="Profile" class="nav-icon">
+      <span>Profile</span>
+    </div>
+  </nav>
+</div>

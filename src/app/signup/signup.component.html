@@ -1,0 +1,45 @@
+<div class="signup-container">
+  <div class="header">
+    <img src="/assets/logo.png" alt="CTU Logo" class="logo">
+    <h1>CTU FORUM</h1>
+  </div>
+  <div class="form-container">
+    <p class="welcome-text">Join the CTU Community Today!</p>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <span class="icon user-icon"></span>
+        <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <span class="icon email-icon"></span>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <span class="icon lock-icon"></span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+      </div>
+      <div class="input-group">
+        <select [(ngModel)]="course" name="course" required>
+          <option value="" disabled selected>Select your course</option>
+          <option value="bsit">BSIT</option>
+          <option value="bscs">BSHM</option>
+          <option value="bsce">BEED</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <select [(ngModel)]="yearLevel" name="yearLevel" required>
+          <option value="" disabled selected>Select your year level</option>
+          <option value="1">1st Year</option>
+          <option value="2">2nd Year</option>
+          <option value="3">3rd Year</option>
+          <option value="4">4th Year</option>
+        </select>
+      </div>
+      <button type="submit" class="sign-up-btn">Sign Up</button>
+    </form>
+    <div class="signin-section">
+      <p>Already have an account?</p>
+      <button class="sign-in-btn" [routerLink]="['/login']">Sign In</button>
+    </div>
+  </div>
+</div>

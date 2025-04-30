@@ -1,0 +1,104 @@
+<div class="profile-container">
+  <header class="header">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="CTU Logo" class="logo-img">
+      <span>CTU FORUM</span>
+    </div>
+    <div class="icons">
+      <div class="notification" (click)="navigateTo('/notifications')">
+        <img src="/assets/bell.png" alt="Notifications" class="icon">
+        <span class="badge">3</span>
+      </div>
+      <div class="hamburger" [ngClass]="{'open': isMenuOpen}" (click)="toggleMenu()">
+        <img [src]="isMenuOpen ? '/assets/close.png' : '/assets/hamburger.png'" alt="Menu" class="icon">
+      </div>
+      <div class="menu" *ngIf="isMenuOpen">
+        <div class="menu-header">
+          <img src="/assets/profile.png" alt="User Avatar">
+          <span>{{ user?.username }}</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/profile')">
+          <img src="/assets/profile.png" alt="Profile" class="menu-icon">
+          <span>Profile</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/settings')">
+          <img src="/assets/settings.png" alt="Settings" class="menu-icon">
+          <span>Settings</span>
+        </div>
+        <div class="menu-item" (click)="navigateTo('/helps')">
+          <img src="/assets/help.png" alt="Helps" class="menu-icon">
+          <span>Helps</span>
+        </div>
+        <div class="menu-item" (click)="logout()">
+          <img src="/assets/logout.png" alt="Logout" class="menu-icon">
+          <span>Logout</span>
+        </div>
+      </div>
+      <div class="backdrop" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+    </div>
+  </header>
+  <main class="main-content">
+    <section class="user-info">
+      <img src="/assets/profile.png" alt="User Avatar" class="avatar">
+      <h1>{{ user?.name }}</h1>
+      <p class="bio">{{ user?.bio }}</p>
+      <p><strong>Student ID:</strong> {{ user?.studentId }}</p>
+      <p><strong>Course:</strong> {{ user?.course }}</p>
+      <p><strong>Year Level:</strong> {{ user?.yearLevel }}</p>
+      <button class="edit-profile-btn" (click)="editProfile()">Edit Profile</button>
+    </section>
+    <section class="tabs">
+      <button class="tab-btn" [ngClass]="{'active': selectedTab === 'Posts'}" (click)="selectTab('Posts')">Posts</button>
+      <button class="tab-btn" [ngClass]="{'active': selectedTab === 'Events'}" (click)="selectTab('Events')">Events</button>
+      <button class="tab-btn" [ngClass]="{'active': selectedTab === 'Activities'}" (click)="selectTab('Activities')">Activities</button>
+    </section>
+    <section class="tab-content">
+      <div *ngIf="selectedTab === 'Posts'">
+        <div class="post" *ngFor="let discussion of discussions">
+          <h3>{{ discussion.title }}</h3>
+          <p>{{ discussion.description }}</p>
+          <p class="meta">Posted • {{ discussion.timestamp }}</p>
+        </div>
+        <p *ngIf="discussions.length === 0">No posts yet.</p>
+      </div>
+      <div *ngIf="selectedTab === 'Events'">
+        <div class="event" *ngFor="let joinedEvent of joinedEvents">
+          <h3>Joined {{ joinedEvent.eventDetails?.title }}</h3>
+          <p>{{ joinedEvent.eventDetails?.formattedDate }}</p>
+          <p class="meta">Event • Joined {{ joinedEvent.joinedAt }}</p>
+        </div>
+        <p *ngIf="joinedEvents.length === 0">No joined events yet.</p>
+      </div>
+      <div *ngIf="selectedTab === 'Activities'">
+        <div class="activity" *ngFor="let joinedActivity of joinedActivities">
+          <h3>Joined {{ joinedActivity.activityDetails?.title }}</h3>
+          <p>{{ joinedActivity.activityDetails?.description }}</p>
+          <p class="meta">Activity • Joined {{ joinedActivity.joinedAt }}</p>
+        </div>
+        <p *ngIf="joinedActivities.length === 0">No joined activities yet.</p>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <div class="nav-item" (click)="navigateTo('/dashboard')">
+      <img src="/assets/home.png" alt="Home" class="nav-icon">
+      <span>Home</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/discussions')">
+      <img src="/assets/discussion.png" alt="Discussions" class="nav-icon">
+      <span>Discussions</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/events')">
+      <img src="/assets/event.png" alt="Events" class="nav-icon">
+      <span>Events</span>
+    </div>
+    <div class="nav-item" (click)="navigateTo('/activities')">
+      <img src="/assets/activities.png" alt="Activities" class="nav-icon">
+      <span>Activities</span>
+    </div>
+    <div class="nav-item active" (click)="navigateTo('/profile')">
+      <img src="/assets/profile.png" alt="Profile" class="nav-icon">
+      <span>Profile</span>
+    </div>
+  </nav>
+</div>
